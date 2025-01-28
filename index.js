@@ -5,10 +5,21 @@
 // test();
 
 const express = require('express');
-const app = express();
+const app = express(express.json());
 const PORT = 3000;
 
 
-app.listen(port, () => {
+app.get('/api', (req, res) => {
+    res.send('API is working');
+});
+
+app.get('/home', (req, res) => {
+    res.send(__dirname+'/views/home.html');
+});
+
+
+app.listen(PORT, () => {
     console.log(`Running express app on ${PORT}`);
 })
+
+// create a simple CRUD
